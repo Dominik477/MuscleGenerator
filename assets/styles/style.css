@@ -28,3 +28,17 @@ main.container { padding-top:24px; padding-bottom:24px; }
 .list li { margin:6px 0; }
 .page h1 { margin:0 0 8px; }
 .page p { color: var(--fg); opacity:.9; }
+
+.breadcrumb { font-size:14px; margin:8px 0 16px; color:var(--muted); }
+.crumb { color:var(--muted); text-decoration:none; }
+.crumb:hover { color:var(--fg); }
+.crumb-sep { margin:0 6px; opacity:.7; }
+.crumb-current { color:var(--fg); }
+
+.flash-stack { display:flex; flex-direction:column; gap:8px; margin: 8px 0 16px; }
+.flash { padding:10px 12px; border-radius:10px; border:1px solid var(--bd); background:var(--panel); }
+.flash.success { outline: 1px solid #16a34a55; }
+.flash.error { outline: 1px solid #ef444455; }
+
+.card-sub { color:var(--muted); margin-top:-4px; margin-bottom:8px; font-size:13px; }
+.card-body p { margin: 0 0 10px; }
