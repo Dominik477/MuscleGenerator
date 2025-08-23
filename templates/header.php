@@ -8,6 +8,9 @@
       <a href="?page=training-programs" class="nav-link <?= is_active('training-programs', $page) ?>">Training</a>
       <a href="?page=muscle-wiki" class="nav-link <?= is_active('muscle-wiki', $page) ?>">Muscle Wiki</a>
       <a href="?page=about-us" class="nav-link <?= is_active('about-us', $page) ?>">About</a>
+      <a href="?page=contact" class="nav-link <?= is_active('contact', $page) ?>">Contact</a>
+      <a href="?page=opinions" class="nav-link <?= is_active('opinions', $page) ?>">Opinions</a>
+
     </nav>
   </div>
 </header>

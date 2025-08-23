@@ -1,0 +1,53 @@
+<?php
+declare(strict_types=1);
+
+/** CSRF */
+function csrf_token(): string {
+  if (empty($_SESSION['__csrf'])) {
+    $_SESSION['__csrf'] = bin2hex(random_bytes(16));
+  }
+  return $_SESSION['__csrf'];
+}
+function csrf_field(): string {
+  return '<input type="hidden" name="__csrf" value="'.htmlspecialchars(csrf_token(), ENT_QUOTES).'">';
+}
+function csrf_verify(): bool {
+  return isset($_POST['__csrf']) && hash_equals($_SESSION['__csrf'] ?? '', (string)$_POST['__csrf']);
+}
+
+/** Honeypot: pole ma być puste */
+function honeypot_ok(string $field = 'website'): bool {
+  return empty($_POST[$field] ?? '');
+}
+
+/** Walidacja */
+function str_trimmed(?string $v): string { return trim((string)$v); }
+function not_empty(string $v): bool { return $v !== ''; }
+function email_valid(string $v): bool { return filter_var($v, FILTER_VALIDATE_EMAIL) !== false; }
+
+/** Zapis/odczyt do JSONL (1 rekord = 1 linia JSON) */
+function jsonl_append(string $filepath, array $row): bool {
+  $dir = dirname($filepath);
+  if (!is_dir($dir)) @mkdir($dir, 0777, true);
+  $fh = @fopen($filepath, 'ab');
+  if (!$fh) return false;
+  $row['created_at'] = date('c');
+  $ok = fwrite($fh, json_encode($row, JSON_UNESCAPED_UNICODE) . PHP_EOL) !== false;
+  fclose($fh);
+  return $ok;
+}
+function jsonl_read_all(string $filepath): array {
+  if (!is_file($filepath)) return [];
+  $out = [];
+  foreach (file($filepath, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES) as $line) {
+    $dec = json_decode($line, true);
+    if (is_array($dec)) $out[] = $dec;
+  }
+  return $out;
+}
+
+/** Bezpieczna redirekcja */
+function redirect(string $url): void {
+  header("Location: $url", true, 302);
+  exit;
+}

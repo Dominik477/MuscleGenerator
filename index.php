@@ -2,9 +2,11 @@
 declare(strict_types=1);
 session_start();
 
+require_once __DIR__ . '/lib/helpers.php';
+
 $page = $_GET['page'] ?? 'home';
 
-$allowed_pages = ['home', 'diet-wiki', 'training-programs', 'muscle-wiki', 'about-us'];
+$allowed_pages = ['home', 'diet-wiki', 'training-programs', 'muscle-wiki', 'about-us', 'contact', 'opinions'];
 if (!in_array($page, $allowed_pages, true)) {
     $page = 'home';
 }

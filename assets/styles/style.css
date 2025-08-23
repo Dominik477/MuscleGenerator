@@ -42,3 +42,15 @@ main.container { padding-top:24px; padding-bottom:24px; }
 
 .card-sub { color:var(--muted); margin-top:-4px; margin-bottom:8px; font-size:13px; }
 .card-body p { margin: 0 0 10px; }
+
+.form { background: var(--panel); border:1px solid var(--bd); border-radius:12px; padding:16px; margin-top:12px; }
+.form-row { margin-bottom:12px; }
+.form label { display:block; font-weight:600; margin-bottom:6px; }
+.form input[type="text"],
+.form input[type="email"],
+.form textarea {
+  width:100%; padding:10px; border-radius:8px; border:1px solid var(--bd); background:#0b1226; color:var(--fg);
+}
+.form input:focus, .form textarea:focus { outline:1px solid var(--acc); }
+.form-actions { margin-top:10px; }
+.hp { display:none; } 
