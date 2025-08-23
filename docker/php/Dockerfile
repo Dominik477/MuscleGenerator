@@ -29,10 +29,6 @@ RUN apk add --no-cache --virtual .build-deps $BUILD_DEPS \
 
 RUN apk add --no-cache --virtual .run-deps $RUN_DEPS
 
-RUN set -eux; \
-    apk add --no-cache $PHPIZE_DEPS postgresql-dev; \
-    docker-php-ext-install pdo pdo_pgsql
-
 RUN echo 'memory_limit = -1' >> /usr/local/etc/php/conf.d/docker-php-memlimit.ini;
 
 # Copy the application code
