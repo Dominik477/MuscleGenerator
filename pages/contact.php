@@ -3,7 +3,7 @@
     <h1>Contact</h1>
     <p>Masz pytanie? Wyślij wiadomość – odpowiemy ASAP.</p>
 
-    <form class="form" method="post" action="/actions/contact_submit.php">
+    <form class="form" method="post" action="/?action=contact_submit&page=contact">
       <?= csrf_field() ?>
       <div class="hp">
         <label>Website <input type="text" name="website" autocomplete="off"></label>

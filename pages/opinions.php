@@ -23,7 +23,7 @@ $opinions = array_reverse(jsonl_read_all($opinionsFile)); // najnowsze na górze
     </div>
 
     <h2 style="margin-top:24px;">Dodaj opinię</h2>
-    <form class="form" method="post" action="/actions/opinion_submit.php">
+    <form class="form" method="post" action="/?action=opinion_submit&page=opinions">
       <?= csrf_field() ?>
       <div class="hp">
         <label>Website <input type="text" name="website" autocomplete="off"></label>

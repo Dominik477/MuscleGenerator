@@ -4,6 +4,21 @@ session_start();
 
 require_once __DIR__ . '/lib/helpers.php';
 
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $action = $_GET['action'] ?? '';
+    switch ($action) {
+        case 'opinion_submit':
+            require __DIR__ . '/actions/opinion_submit.php';
+            exit;
+        case 'contact_submit':
+            require __DIR__ . '/actions/contact_submit.php';
+            exit;
+        default:
+            flash_add('error', 'Nieznana akcja formularza.');
+            redirect('/?page=home');
+    }
+}
+
 $page = $_GET['page'] ?? 'home';
 
 $allowed_pages = ['home', 'diet-wiki', 'training-programs', 'muscle-wiki', 'about-us', 'contact', 'opinions'];

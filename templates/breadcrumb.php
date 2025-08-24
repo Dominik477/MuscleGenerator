@@ -6,6 +6,8 @@ $labels = [
   'training-programs' => 'Training Programs',
   'muscle-wiki' => 'Muscle Wiki',
   'about-us' => 'About Us',
+  'contact' => 'Contact',
+  'opinions' => 'Opinions',
 ];
 ?>
 <nav class="breadcrumb" aria-label="breadcrumb">
