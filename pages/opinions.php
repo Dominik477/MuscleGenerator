@@ -1,8 +1,9 @@
 <?php
 include_once __DIR__ . '/../templates/card.php';
-$opinionsFile = __DIR__ . '/../storage/opinions.jsonl';
-$opinions = array_reverse(jsonl_read_all($opinionsFile)); // najnowsze na górze
+$opinionsFile = AppConfig::storageDir() . '/opinions.jsonl';
+$opinions = array_reverse(jsonl_read_all($opinionsFile));
 ?>
+
 <section class="page">
   <div class="container">
     <h1>Opinions</h1>

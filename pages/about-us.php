@@ -1,8 +1,6 @@
 <section class="page">
   <div class="container">
     <h1>About Us</h1>
-    <p>x</p>
-
     <div class="cards">
       <article class="card">
         <h2>Misja</h2>

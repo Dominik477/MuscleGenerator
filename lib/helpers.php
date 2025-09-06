@@ -1,7 +1,6 @@
 <?php
 declare(strict_types=1);
 
-/** CSRF */
 function csrf_token(): string {
   if (empty($_SESSION['__csrf'])) {
     $_SESSION['__csrf'] = bin2hex(random_bytes(16));
@@ -15,17 +14,14 @@ function csrf_verify(): bool {
   return isset($_POST['__csrf']) && hash_equals($_SESSION['__csrf'] ?? '', (string)$_POST['__csrf']);
 }
 
-/** Honeypot: pole ma być puste */
 function honeypot_ok(string $field = 'website'): bool {
   return empty($_POST[$field] ?? '');
 }
 
-/** Walidacja */
 function str_trimmed(?string $v): string { return trim((string)$v); }
 function not_empty(string $v): bool { return $v !== ''; }
 function email_valid(string $v): bool { return filter_var($v, FILTER_VALIDATE_EMAIL) !== false; }
 
-/** Zapis/odczyt do JSONL (1 rekord = 1 linia JSON) */
 function jsonl_append(string $filepath, array $row): bool {
   $dir = dirname($filepath);
   if (!is_dir($dir)) @mkdir($dir, 0777, true);
@@ -46,8 +42,16 @@ function jsonl_read_all(string $filepath): array {
   return $out;
 }
 
-/** Bezpieczna redirekcja */
 function redirect(string $url): void {
   header("Location: $url", true, 302);
   exit;
+}
+
+function flash_add(string $type, string $message): void {
+  $_SESSION['__flash'][] = ['type' => $type, 'message' => $message];
+}
+function flash_get_all(): array {
+  $msgs = $_SESSION['__flash'] ?? [];
+  unset($_SESSION['__flash']);
+  return $msgs;
 }

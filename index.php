@@ -2,8 +2,10 @@
 declare(strict_types=1);
 session_start();
 
+require_once __DIR__ . '/lib/config.php';
 require_once __DIR__ . '/lib/helpers.php';
 
+/* --- Front controller: akcje POST --- */
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $action = $_GET['action'] ?? '';
     switch ($action) {
@@ -19,26 +21,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
+/* --- Routing GET --- */
 $page = $_GET['page'] ?? 'home';
+$allowed_pages = ['home','diet-wiki','training-programs','muscle-wiki','about-us','contact','opinions'];
 
-$allowed_pages = ['home', 'diet-wiki', 'training-programs', 'muscle-wiki', 'about-us', 'contact', 'opinions'];
+$error = null;
 if (!in_array($page, $allowed_pages, true)) {
-    $page = 'home';
+    $error = ['code' => 404, 'message' => 'Strona nie została znaleziona.'];
+    $page = null; // ważne: nie będziemy includować widoku
 }
 
-function is_active(string $p, string $cur): string {
+/* --- Helpery --- */
+function is_active(string $p, ?string $cur): string {
     return $p === $cur ? 'active' : '';
 }
 
-function flash_add(string $type, string $message): void {
-    $_SESSION['__flash'][] = ['type' => $type, 'message' => $message];
-}
-function flash_get_all(): array {
-    $msgs = $_SESSION['__flash'] ?? [];
-    unset($_SESSION['__flash']);
-    return $msgs;
-}
-
+/* --- Manualne testowe flashy z URL (opcjonalne) --- */
 if (isset($_GET['flash'], $_GET['msg'])) {
     $type = $_GET['flash'] === 'ok' ? 'success' : 'error';
     flash_add($type, (string)$_GET['msg']);
@@ -50,6 +48,7 @@ if (isset($_GET['flash'], $_GET['msg'])) {
   <meta charset="utf-8">
   <title>Muscle Generator</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Zostawiam Twoją ścieżkę do CSS; upewnij się, że plik istnieje -->
   <link rel="stylesheet" href="/assets/styles/style.css">
 </head>
 <body>
@@ -57,8 +56,12 @@ if (isset($_GET['flash'], $_GET['msg'])) {
 
   <main class="container">
     <?php
-      include __DIR__ . '/templates/breadcrumb.php';
+      // breadcrumb tylko gdy NIE ma 404
+      if (!$error) {
+          include __DIR__ . '/templates/breadcrumb.php';
+      }
 
+      // flash messages
       $flashes = flash_get_all();
       if (!empty($flashes)): ?>
         <div class="flash-stack" id="flash-stack">
@@ -70,7 +73,15 @@ if (isset($_GET['flash'], $_GET['msg'])) {
         </div>
     <?php endif; ?>
 
-    <?php include __DIR__ . "/pages/{$page}.php"; ?>
+    <?php
+      // >>> JEDYNE miejsce renderu treści <<<
+      if ($error) {
+          $code = $error['code']; $message = $error['message'];
+          include __DIR__ . '/templates/error.php';
+      } else {
+          include __DIR__ . "/pages/{$page}.php";
+      }
+    ?>
   </main>
 
   <?php include __DIR__ . '/templates/footer.php'; ?>

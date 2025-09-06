@@ -1,7 +1,6 @@
 <section class="page">
   <div class="container">
     <h1>Training Programs</h1>
-    <p>x</p>
 
     <div class="cards">
       <article class="card">

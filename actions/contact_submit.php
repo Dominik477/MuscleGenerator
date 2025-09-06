@@ -28,7 +28,7 @@ if ($errors) {
   redirect('/?page=contact');
 }
 
-$ok = jsonl_append(__DIR__ . '/../storage/contact_messages.jsonl', [
+$ok = jsonl_append(AppConfig::storageDir() . '/contact_messages.jsonl', [
   'name'    => $name,
   'email'   => $email,
   'message' => $message,

@@ -1,4 +1,5 @@
 <section class="page">
+  
   <div class="container">
     <h1>Contact</h1>
     <p>Masz pytanie? Wyślij wiadomość – odpowiemy ASAP.</p>
@@ -21,7 +22,7 @@
       </div>
       <div class="form-row">
         <label>Wiadomość
-          <textarea name="message" rows="5" required></textarea>
+          <textarea name="message" rows="5" required minlength="5" maxlength="2000"></textarea>
         </label>
       </div>
       <div class="form-actions">

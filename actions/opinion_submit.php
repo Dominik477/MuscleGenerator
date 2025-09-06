@@ -24,8 +24,7 @@ if ($errors) {
   redirect('/?page=opinions');
 }
 
-$ok = jsonl_append(__DIR__ . '/../storage/opinions.jsonl', [
-  'name'    => $name,
+$ok = jsonl_append(AppConfig::storageDir() . '/opinions.jsonl', [  'name'    => $name,
   'message' => $message,
   'ip'      => $_SERVER['REMOTE_ADDR']      ?? null,
   'ua'      => $_SERVER['HTTP_USER_AGENT']  ?? null,
