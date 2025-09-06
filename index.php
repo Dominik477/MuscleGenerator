@@ -28,15 +28,13 @@ $allowed_pages = ['home','diet-wiki','training-programs','muscle-wiki','about-us
 $error = null;
 if (!in_array($page, $allowed_pages, true)) {
     $error = ['code' => 404, 'message' => 'Strona nie została znaleziona.'];
-    $page = null; // ważne: nie będziemy includować widoku
+    $page = null; 
 }
 
-/* --- Helpery --- */
 function is_active(string $p, ?string $cur): string {
     return $p === $cur ? 'active' : '';
 }
 
-/* --- Manualne testowe flashy z URL (opcjonalne) --- */
 if (isset($_GET['flash'], $_GET['msg'])) {
     $type = $_GET['flash'] === 'ok' ? 'success' : 'error';
     flash_add($type, (string)$_GET['msg']);
@@ -48,20 +46,17 @@ if (isset($_GET['flash'], $_GET['msg'])) {
   <meta charset="utf-8">
   <title>Muscle Generator</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Zostawiam Twoją ścieżkę do CSS; upewnij się, że plik istnieje -->
-  <link rel="stylesheet" href="/assets/styles/style.css">
+  <link rel="stylesheet" href="/assets/styles/style.css?v=2">
 </head>
 <body>
   <?php include __DIR__ . '/templates/header.php'; ?>
 
   <main class="container">
     <?php
-      // breadcrumb tylko gdy NIE ma 404
       if (!$error) {
           include __DIR__ . '/templates/breadcrumb.php';
       }
 
-      // flash messages
       $flashes = flash_get_all();
       if (!empty($flashes)): ?>
         <div class="flash-stack" id="flash-stack">
@@ -74,7 +69,6 @@ if (isset($_GET['flash'], $_GET['msg'])) {
     <?php endif; ?>
 
     <?php
-      // >>> JEDYNE miejsce renderu treści <<<
       if ($error) {
           $code = $error['code']; $message = $error['message'];
           include __DIR__ . '/templates/error.php';

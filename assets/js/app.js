@@ -7,7 +7,6 @@
     setTimeout(() => stack.remove(), 300);
   }, 4000);
 })();
-// Auto-dismiss flash
 (function () {
   const stack = document.getElementById('flash-stack');
   if (!stack) return;

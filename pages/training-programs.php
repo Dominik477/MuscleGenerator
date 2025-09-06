@@ -24,7 +24,7 @@
 
       <article class="card">
         <h2>Push/Pull/Legs (3–6x/tyg)</h2>
-        <p>Dla średniozaawansowanych. Dodamy kalkulator objętości w późniejszych krokach.</p>
+        <p>Plan dla średniozaawansowanych.</p>
       </article>
     </div>
   </div>

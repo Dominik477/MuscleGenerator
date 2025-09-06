@@ -6,8 +6,9 @@ $opinions = array_reverse(jsonl_read_all($opinionsFile));
 
 <section class="page">
   <div class="container">
-    <h1>Opinions</h1>
-    <p>Zostaw opinię o Muscle Generator. Użyj prawdziwego e‑maila tylko jeśli chcesz kontakt zwrotny.</p>
+   <h1>Opinie</h1>
+    <p class="muted">Twoja opinia pomaga nam ustalić priorytety i robić lepsze narzędzia.</p>
+
 
     <div class="cards">
       <?php if (count($opinions) === 0): ?>
@@ -41,7 +42,10 @@ $opinions = array_reverse(jsonl_read_all($opinionsFile));
         </label>
       </div>
       <div class="form-actions">
-        <button class="btn" type="submit">Wyślij opinię</button>
+  <button class="btn btn-primary" type="submit">Wyślij opinię</button>
+  <span class="muted">Dziękujemy! 👋</span>
+</div>
+
       </div>
     </form>
   </div>

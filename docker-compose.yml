@@ -13,6 +13,14 @@ services:
       - php
     networks:
       - pg-network
+    environment:
+      APP_ENV: "dev"
+      STORAGE_DRIVER: "db"
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_NAME: musclegenerator
+      DB_USER: postgres
+      DB_PASS: postgres
   
   db:
     build:
@@ -22,6 +30,10 @@ services:
       - "5433:5432"
     networks:
       - pg-network
+    environment:
+      POSTGRES_DB: musclegenerator
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
   
   php:
     build:
@@ -31,6 +43,14 @@ services:
       - .:/app
     networks:
       - pg-network
+    environment:
+      APP_ENV: "dev"
+      STORAGE_DRIVER: "db"
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_NAME: musclegenerator
+      DB_USER: postgres
+      DB_PASS: postgres
   
   pgadmin:
     image: dpage/pgadmin4:latest
