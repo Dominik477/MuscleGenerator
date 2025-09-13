@@ -46,3 +46,24 @@
     });
   });
 })();
+
+(function(){
+  var btn = document.querySelector('.nav-toggle');
+  var nav = document.getElementById('site-nav');
+  if (!btn || !nav) return;
+
+  btn.addEventListener('click', function(){
+    var open = document.body.classList.toggle('nav-open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+
+  nav.addEventListener('click', function(e){
+    var a = e.target.closest('a');
+    if (!a) return;
+    if (window.matchMedia('(max-width: 879px)').matches) {
+      document.body.classList.remove('nav-open');
+      btn.setAttribute('aria-expanded', 'false');
+    }
+  }, true);
+})();
+

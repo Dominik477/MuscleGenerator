@@ -44,7 +44,7 @@ BEGIN
   SELECT COUNT(*) INTO recent_count
   FROM opinions
   WHERE ip = NEW.ip
-    AND created_at >= (NOW() - INTERVAL '30 seconds');
+    AND created_at >= (NOW() - INTERVAL '30 sekund');
 
   IF recent_count > 0 THEN
     RAISE EXCEPTION 'Za dużo opinii z tego adresu IP. Proszę chwilę odczekać.';
