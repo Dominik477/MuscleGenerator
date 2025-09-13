@@ -4,6 +4,10 @@ session_start();
 
 require_once __DIR__ . '/lib/config.php';
 require_once __DIR__ . '/lib/helpers.php';
+require_once __DIR__ . '/lib/Db.php';
+require_once __DIR__ . '/lib/OpinionsRepo.php';
+require_once __DIR__ . '/lib/ContactRepo.php';
+
 
 /* --- Front controller: akcje POST --- */
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
