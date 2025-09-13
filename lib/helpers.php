@@ -43,9 +43,15 @@ function jsonl_read_all(string $filepath): array {
 }
 
 function redirect(string $url): void {
-  header("Location: $url", true, 302);
+  if (!headers_sent()) {
+    header("Location: $url", true, 302);
+    exit;
+  }
+  echo '<!doctype html><meta http-equiv="refresh" content="0;url=' . htmlspecialchars($url, ENT_QUOTES) . '">';
+  echo '<script>location.replace(' . json_encode($url) . ');</script>';
   exit;
 }
+
 
 function flash_add(string $type, string $message): void {
   $_SESSION['__flash'][] = ['type' => $type, 'message' => $message];

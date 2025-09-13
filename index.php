@@ -5,31 +5,44 @@ session_start();
 require_once __DIR__ . '/lib/config.php';
 require_once __DIR__ . '/lib/helpers.php';
 require_once __DIR__ . '/lib/Db.php';
+require_once __DIR__ . '/lib/UsersRepo.php';
 require_once __DIR__ . '/lib/OpinionsRepo.php';
 require_once __DIR__ . '/lib/ContactRepo.php';
+require_once __DIR__ . '/lib/auth.php';
+
 
 
 /* --- Front controller: akcje POST --- */
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $action = $_GET['action'] ?? '';
     switch ($action) {
-        case 'opinion_submit':
-            require __DIR__ . '/actions/opinion_submit.php';
-            exit;
-        case 'contact_submit':
-            require __DIR__ . '/actions/contact_submit.php';
-            exit;
+        case 'opinion_submit':  require __DIR__ . '/actions/opinion_submit.php'; exit;
+        case 'contact_submit':  require __DIR__ . '/actions/contact_submit.php'; exit;
+        case 'login':           require __DIR__ . '/actions/login_submit.php'; exit;
         default:
             flash_add('error', 'Nieznana akcja formularza.');
             redirect('/?page=home');
     }
 }
-
 /* --- Routing GET --- */
 $page = $_GET['page'] ?? 'home';
-$allowed_pages = ['home','diet-wiki','training-programs','muscle-wiki','about-us','contact','opinions'];
+$allowed_pages = ['home','diet-wiki','training-programs','muscle-wiki','about-us','contact','opinions','login','admin'];
+
+if (($_GET['action'] ?? '') === 'logout') {
+    auth_logout();
+    flash_add('success', 'Wylogowano.');
+    redirect('/?page=home');
+}
 
 $error = null;
+
+if (!$error && $page === 'admin') {
+    if (!auth_logged() || !auth_is('admin')) {
+        flash_add('error', 'Brak uprawnień.');
+        redirect('/?page=home'); 
+    }
+}
+
 if (!in_array($page, $allowed_pages, true)) {
     $error = ['code' => 404, 'message' => 'Strona nie została znaleziona.'];
     $page = null; 
