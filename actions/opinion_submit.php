@@ -1,5 +1,10 @@
 <?php
 
+if (!auth_logged()) {
+  flash_add('error', 'Zaloguj się, aby dodać opinię.');
+  redirect('/?page=login&return=opinions');
+}
+
 if (!csrf_verify() || !honeypot_ok()) {
   flash_add('error', 'Nieprawidłowa próba wysłania formularza.');
   redirect('/?page=opinions');

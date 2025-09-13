@@ -2,12 +2,14 @@
 /** @var string $page */
 $labels = [
   'home' => 'Home',
-  'diet-wiki' => 'Diet Wiki',
-  'training-programs' => 'Training Programs',
-  'muscle-wiki' => 'Muscle Wiki',
-  'about-us' => 'About Us',
-  'contact' => 'Contact',
-  'opinions' => 'Opinions',
+  'diet-wiki' => 'Dieta',
+  'training-programs' => 'Plany treningowe',
+  'muscle-wiki' => 'Mięśnie',
+  'about-us' => 'O nas',
+  'contact' => 'Kontakt',
+  'opinions' => 'Opinie',
+  'login' => 'Logowanie',
+  'register' => "Rejestracja"
 ];
 ?>
 <nav class="breadcrumb" aria-label="breadcrumb">

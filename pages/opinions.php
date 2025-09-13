@@ -58,24 +58,36 @@ $totalPages = max(1, (int)ceil($total / $perPage));
     <?php endif; ?>
 
     <h2 style="margin-top:24px;">Dodaj opinię</h2>
-    <form class="form" method="post" action="/?action=opinion_submit&page=opinions" novalidate>
-      <?= csrf_field() ?>
-      <div class="hp"><label>Website <input type="text" name="website" autocomplete="off"></label></div>
 
-      <div class="form-row">
-        <label>Imię / Nick
-          <input type="text" name="name" required>
-        </label>
-      </div>
-      <div class="form-row">
-        <label>Twoja opinia
-          <textarea name="message" rows="4" required minlength="5" maxlength="1000"></textarea>
-        </label>
-      </div>
-      <div class="form-actions">
-        <button class="btn btn-primary" type="submit">Wyślij opinię</button>
-        <span class="muted">Dziękujemy! 👋</span>
-      </div>
-    </form>
+<?php if (!auth_logged()): ?>
+  <article class="card">
+    <p>Aby dodać opinię, zaloguj się lub utwórz konto.</p>
+    <div class="btn-group">
+      <a class="btn btn-primary" href="/?page=login&return=opinions">Zaloguj się</a>
+      <a class="btn btn-outline" href="/?page=register">Zarejestruj się</a>
+    </div>
+  </article>
+<?php else: ?>
+  <form class="form" method="post" action="/?action=opinion_submit&page=opinions" novalidate>
+    <?= csrf_field() ?>
+    <div class="hp"><label>Website <input type="text" name="website" autocomplete="off"></label></div>
+
+    <div class="form-row">
+      <label>Imię / Nick
+        <input type="text" name="name" required>
+      </label>
+    </div>
+    <div class="form-row">
+      <label>Twoja opinia
+        <textarea name="message" rows="4" required minlength="5" maxlength="1000"></textarea>
+      </label>
+    </div>
+    <div class="form-actions">
+      <button class="btn btn-primary" type="submit">Wyślij opinię</button>
+      <span class="muted">Dziękujemy! 👋</span>
+    </div>
+  </form>
+<?php endif; ?>
+
   </div>
 </section>

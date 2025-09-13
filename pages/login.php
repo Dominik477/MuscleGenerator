@@ -3,9 +3,12 @@
     <h1>Logowanie</h1>
     <p class="muted">Zaloguj się, aby uzyskać dostęp do panelu.</p>
 
+    <?php $return = htmlspecialchars((string)($_GET['return'] ?? ''), ENT_QUOTES); ?>
+
     <form class="form" method="post" action="/?action=login&page=login" novalidate>
-      <?= csrf_field() ?>
-      <div class="hp"><label>Website <input type="text" name="website" autocomplete="off"></label></div>
+    <?= csrf_field() ?>
+    <input type="hidden" name="__return" value="<?= $return ?>">
+    <div class="hp"><label>Website <input type="text" name="website" autocomplete="off"></label></div>
 
       <div class="form-row">
         <label>Email

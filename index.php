@@ -19,6 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         case 'opinion_submit':  require __DIR__ . '/actions/opinion_submit.php'; exit;
         case 'contact_submit':  require __DIR__ . '/actions/contact_submit.php'; exit;
         case 'login':           require __DIR__ . '/actions/login_submit.php'; exit;
+        case 'register':       require __DIR__ . '/actions/register_submit.php'; exit;
         default:
             flash_add('error', 'Nieznana akcja formularza.');
             redirect('/?page=home');
@@ -26,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 /* --- Routing GET --- */
 $page = $_GET['page'] ?? 'home';
-$allowed_pages = ['home','diet-wiki','training-programs','muscle-wiki','about-us','contact','opinions','login','admin'];
+$allowed_pages = ['home','diet-wiki','training-programs','muscle-wiki','about-us','contact','opinions','login','admin','register'];
 
 if (($_GET['action'] ?? '') === 'logout') {
     auth_logout();
