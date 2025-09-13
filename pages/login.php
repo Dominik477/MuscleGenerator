@@ -4,6 +4,8 @@
     <p class="muted">Zaloguj się, aby uzyskać dostęp do panelu.</p>
 
     <?php $return = htmlspecialchars((string)($_GET['return'] ?? ''), ENT_QUOTES); ?>
+    session_regenerate_id(true);
+    auth_login((int)$user['id'], (string)$user['role'], (string)$user['email']);
 
     <form class="form" method="post" action="/?action=login&page=login" novalidate>
     <?= csrf_field() ?>
@@ -28,4 +30,5 @@
       </div>
     </form>
   </div>
+  
 </section>

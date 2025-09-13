@@ -12,6 +12,7 @@ require_once __DIR__ . '/lib/auth.php';
 
 
 
+
 /* --- Front controller: akcje POST --- */
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $action = $_GET['action'] ?? '';

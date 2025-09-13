@@ -15,4 +15,12 @@ final class UsersRepo {
     $st->execute([':email' => $email, ':ph' => $hash, ':role' => $role]);
     return (int)$st->fetchColumn();
   }
+
+  public static function findById(int $id): ?array {
+  $st = Db::pdo()->prepare("SELECT id, email, role FROM users WHERE id = :id LIMIT 1");
+  $st->execute([':id' => $id]);
+  $row = $st->fetch(PDO::FETCH_ASSOC);
+  return $row ?: null;
+}
+
 }

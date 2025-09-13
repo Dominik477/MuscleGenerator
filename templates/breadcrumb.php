@@ -9,7 +9,8 @@ $labels = [
   'contact' => 'Kontakt',
   'opinions' => 'Opinie',
   'login' => 'Logowanie',
-  'register' => "Rejestracja"
+  'register' => "Rejestracja",
+  "admin"=> "Admin"
 ];
 ?>
 <nav class="breadcrumb" aria-label="breadcrumb">
