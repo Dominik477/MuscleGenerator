@@ -17,14 +17,25 @@ Proste plany, jasne zasady żywienia i narzędzia, które pomagają w starcie i 
 
 ---
 
+## 🛕 Diagram ERD
+<img width="1110" height="449" alt="image" src="https://github.com/user-attachments/assets/21ef281e-f18f-4364-afc9-1878a1076df3" />
+
+
+---
+
 ## 🖼️ Screeny
-<img width="1218" height="905" alt="image" src="https://github.com/user-attachments/assets/f230bf4e-733a-4c44-b002-43babb7e1cab" />
-<img width="1044" height="440" alt="image" src="https://github.com/user-attachments/assets/db8df3e1-2224-4aa1-841d-62b7e4e879bf" />
-<img width="1019" height="488" alt="image" src="https://github.com/user-attachments/assets/76410009-c6c3-479d-a730-a62d45fbfda1" />
-<img width="1047" height="494" alt="image" src="https://github.com/user-attachments/assets/7966c0b4-9c03-48a1-a0fd-e6f1982b2644" />
-<img width="1102" height="549" alt="image" src="https://github.com/user-attachments/assets/71a77a98-901b-4eb1-82e4-6f7a7a18a8bc" />
-<img width="1134" height="699" alt="image" src="https://github.com/user-attachments/assets/98470f93-8058-43ef-b52e-e257d683717a" />
-<img width="1112" height="753" alt="image" src="https://github.com/user-attachments/assets/8d1fa51e-0fee-4548-ada1-90f79d744823" />
+<img width="1089" height="887" alt="image" src="https://github.com/user-attachments/assets/a2642829-7ffb-4fc9-85f3-4ad919f9c6cc" />
+<img width="998" height="451" alt="image" src="https://github.com/user-attachments/assets/8b46f9bf-115c-457b-8226-be26f93ef400" />
+<img width="1008" height="462" alt="image" src="https://github.com/user-attachments/assets/11a6d2c1-e13e-48a9-9a29-a77e606317af" />
+<img width="960" height="470" alt="image" src="https://github.com/user-attachments/assets/975a3649-3244-4632-a9a3-f633f2f76691" />
+<img width="980" height="739" alt="image" src="https://github.com/user-attachments/assets/31893404-553c-4388-919e-d094cddc065a" />
+<img width="1066" height="858" alt="image" src="https://github.com/user-attachments/assets/a4d09b22-302b-49eb-bc2c-a16cb7acf1d5" />
+<img width="984" height="532" alt="image" src="https://github.com/user-attachments/assets/326b7e25-c405-4a78-8fd7-55fe7b802222" />
+<img width="1002" height="715" alt="image" src="https://github.com/user-attachments/assets/b7ece024-00a5-4ebe-8b6d-fb82a3169543" />
+<img width="990" height="489" alt="image" src="https://github.com/user-attachments/assets/c1099409-7e65-478a-91a5-4527e0bd05b4" />
+<img width="955" height="516" alt="image" src="https://github.com/user-attachments/assets/b3d87550-622d-4c59-a197-dc22e414dd7d" />
+<img width="1031" height="871" alt="image" src="https://github.com/user-attachments/assets/fe8c9431-5ba8-443b-8213-c507c0931b8a" />
+
 
 
 
