@@ -61,3 +61,4 @@ function flash_get_all(): array {
   unset($_SESSION['__flash']);
   return $msgs;
 }
+

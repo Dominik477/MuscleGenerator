@@ -17,17 +17,17 @@
     <h2>Co znajdziesz w Muscle Generator?</h2>
     <div class="cards">
       <article class="card">
-        <h2>Diet Wiki</h2>
+        <h2>Dieta</h2>
         <p>Zrozum zasady żywienia – jak komponować posiłki, ile jeść i jak wspierać regenerację.</p>
       </article>
 
       <article class="card">
-        <h2>Programy treningowe</h2>
+        <h2>Plany treningowe</h2>
         <p>Gotowe plany krok po kroku: od podstawowych schematów dla początkujących po ambitniejsze układy.</p>
       </article>
 
       <article class="card">
-        <h2>Muscle Wiki</h2>
+        <h2>Mięśnie</h2>
         <p>Atlas ćwiczeń i mięśni – naucz się poprawnej techniki i dobieraj ćwiczenia świadomie.</p>
       </article>
 
